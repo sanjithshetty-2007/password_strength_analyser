@@ -1,59 +1,4 @@
-# from flask import Flask, render_template, request, jsonify
-# import re, math, secrets, string
 
-# app = Flask(__name__)
-
-# def password_rules(password):
-#     return {
-#         "length": len(password) >= 8,
-#         "uppercase": bool(re.search(r"[A-Z]", password)),
-#         "lowercase": bool(re.search(r"[a-z]", password)),
-#         "number": bool(re.search(r"\d", password)),
-#         "special": bool(re.search(r"[^A-Za-z0-9]", password)),
-#     }
-
-# def estimate_crack_time(password):
-#     charset = 0
-#     if re.search(r"[a-z]", password): charset += 26
-#     if re.search(r"[A-Z]", password): charset += 26
-#     if re.search(r"\d", password): charset += 10
-#     if re.search(r"[^A-Za-z0-9]", password): charset += 32
-
-#     if charset == 0:
-#         return "Instant 💀"
-
-#     entropy = len(password) * math.log2(charset)
-#     guesses_per_sec = 1e9
-#     seconds = (2 ** entropy) / guesses_per_sec
-
-#     if seconds < 60: return "Seconds 😬"
-#     if seconds < 3600: return "Minutes 😑"
-#     if seconds < 86400: return "Hours 👀"
-#     if seconds < 31536000: return "Days 😎"
-#     if seconds < 315360000: return "Years 😈"
-#     return "Centuries 🧠"
-
-# def generate_password(length=16):
-#     chars = string.ascii_letters + string.digits + "!@#$%^&*()_+"
-#     return "".join(secrets.choice(chars) for _ in range(length))
-
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-# @app.route("/check", methods=["POST"])
-# def check():
-#     password = request.json.get("password", "")
-#     rules = password_rules(password)
-#     crack_time = estimate_crack_time(password)
-#     return jsonify({"rules": rules, "crack_time": crack_time})
-
-# @app.route("/generate")
-# def generate():
-#     return jsonify({"password": generate_password()})
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
 
 from flask import Flask, render_template, request, jsonify
 import re
@@ -168,6 +113,18 @@ def generate():
     generator = PasswordGenerator()
     return jsonify({"password": generator.generate()})
 
+
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 if __name__ == "__main__":
     app.run(debug=True)
