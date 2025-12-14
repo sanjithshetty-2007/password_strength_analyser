@@ -113,18 +113,12 @@ def generate():
     generator = PasswordGenerator()
     return jsonify({"password": generator.generate()})
 
+import os
 
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 4000
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
 
 if __name__ == "__main__":
     app.run(debug=True)
+
