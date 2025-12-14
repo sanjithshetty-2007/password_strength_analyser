@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PasswordLab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body class="dark">
+
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="logo">🔐 PasswordLab</div>
+    <span class="tagline">Security, not vibes</span>
+  </div>
+
+  <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+</nav>
+
+<main class="wrapper">
+
+  <!-- CHECKER -->
+  <section class="card">
+    <h1>Password Strength Checker</h1>
+    <p class="subtitle">Real-time, entropy-based analysis</p>
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter password"
+      autocomplete="new-password"
+      aria-label="Password input"
+    />
+
+    <div class="strength-bar">
+      <div id="strength-fill"></div>
+    </div>
+
+    <div id="strength-text" aria-live="polite"></div>
+
+    <ul id="conditions">
+      <li id="length"><span class="icon">❌</span> At least 8 characters</li>
+      <li id="uppercase"><span class="icon">❌</span> Uppercase letter</li>
+      <li id="lowercase"><span class="icon">❌</span> Lowercase letter</li>
+      <li id="number"><span class="icon">❌</span> Number</li>
+      <li id="special"><span class="icon">❌</span> Special character</li>
+    </ul>
+
+    <div id="crack-time" class="crack-box">
+      ⏳ Estimated crack time: --
+    </div>
+  </section>
+
+  <!-- GENERATOR -->
+  <section class="card generator">
+    <h2>Generate Strong Password</h2>
+
+    <div class="gen-row">
+      <input type="text" id="generated-password" readonly />
+      <button id="copy-btn" aria-label="Copy password">📋</button>
+      <button id="generate-btn">Generate</button>
+    </div>
+
+    <div class="suggestion">
+      💡 Tip: 16+ characters beats complexity.
+    </div>
+  </section>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast" role="alert">Copied to clipboard</div>
+
+<footer>
+  Built with logic, discipline, and clarity.
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
